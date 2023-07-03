@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "368363343322",
+    "project_id": "uchetodoo",
+    "storage_bucket": "uchetodoo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368363343322:android:bcb80606a77e53070184e3",
+        "android_client_info": {
+          "package_name": "com.example.todo_uchenna"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "368363343322-mc93nisutojuj8heu0cdpp9p97m7vfve.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.todo_uchenna",
+            "certificate_hash": "8b68f78db13387146b43ee52fe2b7c25e8a38f48"
+          }
+        },
+        {
+          "client_id": "368363343322-o7ii223ufd2ouitt37aq64e701saefc3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjoVYEzuQA13tLCkpyhcuybM6e-bhM698"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "368363343322-o7ii223ufd2ouitt37aq64e701saefc3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
