@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:todo_uchenna/screens/splash_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_uchenna/view_models/add_task_view_model.dart';
 
 
 void main() async{
@@ -14,8 +16,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: SplashScreen(),
+    return ChangeNotifierProvider(
+      create: (BuildContext context) => AddTaskViewModel(),
+      child: const MaterialApp(
+        home: SplashScreen(),
+      ),
     );
   }
 }
