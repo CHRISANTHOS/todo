@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//Decoration constant for text field
+
 const textFieldDecoration = InputDecoration(
     hintStyle: TextStyle(
         color: Colors.grey

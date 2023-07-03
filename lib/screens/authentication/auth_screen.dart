@@ -5,6 +5,7 @@ import 'package:todo_uchenna/screens/home_screen.dart';
 import 'package:todo_uchenna/widgets/custom_button.dart';
 import 'package:todo_uchenna/provider/auth_provider.dart';
 
+//Authentication Screen
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -24,12 +25,11 @@ class _AuthScreenState extends State<AuthScreen> {
               text: 'Continue with Google',
               onTap: () {
                 AuthProvider().signInWithGoogle().then((value) {
-                  nextPageReplace(const HomeScreen(), context);
+                  nextPageReplace(const HomeScreen(), context); //Navigate to Home Screen after authentication success
                 }).catchError((e){
                   print(e);
-                  showSnackBar(context, e.toString(),);
+                  showSnackBar(context, e.toString(),); //Show Possible error
                 });
-                // nextPageReplace(const HomeScreen(), context);
               },
               bgColor: Colors.black54,
               textColor: Colors.white),

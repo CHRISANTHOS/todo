@@ -34,7 +34,7 @@ class _TimePickerState extends State<TimePicker> {
             context: context,
           );
           if(pickedTime != null ){
-            String formattedTime = pickedTime.format(context).toString(); //output 14:59:00
+            String formattedTime = pickedTime.format(context).toString(); //output picked time
 
             setState(() {
               widget.controller.text = formattedTime; //set the value of text field.

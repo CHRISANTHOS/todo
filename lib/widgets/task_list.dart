@@ -11,8 +11,8 @@ import 'package:todo_uchenna/view_models/task_view_model.dart';
 
 class TaskList extends StatefulWidget {
 
-  TaskList({Key? key,required this.stream}) : super(key: key);
-  Stream<List<TaskViewModel>>? stream;
+  TaskList({Key? key,required this.stream}) : super(key: key); //TaskList constructors to accept stream parameter
+  Stream<List<TaskViewModel>>? stream; //Stream parameter
 
   @override
   State<TaskList> createState() => _TaskListState();
@@ -23,7 +23,7 @@ class _TaskListState extends State<TaskList> {
 
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  User? user = FirebaseAuth.instance.currentUser;
+  User? user = FirebaseAuth.instance.currentUser; //Get current user
 
 
   @override
@@ -31,7 +31,7 @@ class _TaskListState extends State<TaskList> {
     return StreamBuilder(
       stream: widget.stream,
       builder: (context, snapshot){
-        if (!snapshot.hasData) {
+        if (!snapshot.hasData) { //Return No task if empty
           return const Center(
             child: Text(
               'No Tasks',
@@ -39,14 +39,13 @@ class _TaskListState extends State<TaskList> {
             ),
           );
         }
-        if(snapshot.connectionState == ConnectionState.waiting){
+        if(snapshot.connectionState == ConnectionState.waiting){ //Return circular indicator while loading
           return const Center(
             child: CircularProgressIndicator(),
           );
         }
 
         final tasks = snapshot.data;
-
 
         return ListView.builder(
           padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
@@ -57,7 +56,7 @@ class _TaskListState extends State<TaskList> {
 
             return Column(
               children: [
-                ListTile(
+                ListTile( //Task ListTile
                   key: ValueKey(task),
                   leading: Container(
                     height: 30,
@@ -67,7 +66,7 @@ class _TaskListState extends State<TaskList> {
                   ),
                   title: Text(task.title),
                   subtitle: Text(task.description),
-                  trailing: PopupMenuButton<String>(
+                  trailing: PopupMenuButton<String>( //Trailing button to get more actions
                     itemBuilder: (context) {
                       return [
                         const PopupMenuItem(
@@ -82,7 +81,7 @@ class _TaskListState extends State<TaskList> {
                       ];
                     },
                     onSelected: (value) {
-                      if(value == 'edit'){
+                      if(value == 'edit'){ //Navigate to Update Screen
                         nextPage(
                             UpdateTaskScreen(
                               title: task.title,
@@ -93,7 +92,7 @@ class _TaskListState extends State<TaskList> {
                               docId: task.id!,
                             ),
                             context);
-                      }else if(value == 'delete'){
+                      }else if(value == 'delete'){ //Delete Task
                         Provider.of<AddTaskViewModel>(context, listen: false).deleteTask(docId: task.id!, uid: FirebaseAuth.instance.currentUser!.uid);
                       }
                     },

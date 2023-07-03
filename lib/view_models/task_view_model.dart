@@ -1,5 +1,7 @@
 import 'package:todo_uchenna/model/task.dart';
 
+//Set TaskViewModel class as a getter for the model
+
 class TaskViewModel{
 
   Task task;

@@ -6,20 +6,21 @@ import 'package:todo_uchenna/utils/pick_image.dart';
 import 'dart:io';
 import 'package:provider/provider.dart';
 import 'package:todo_uchenna/view_models/add_task_view_model.dart';
-
 import '../utils/snackbar.dart';
 import '../widgets/custom_button.dart';
 
 
 class AddTaskScreen extends StatefulWidget {
-  String address;
-  AddTaskScreen({Key? key, required this.address}) : super(key: key);
+  String address; //Address parameter
+  AddTaskScreen({Key? key, required this.address}) : super(key: key); //Constructor
 
   @override
   State<AddTaskScreen> createState() => _AddTaskScreenState();
 }
 
 class _AddTaskScreenState extends State<AddTaskScreen> {
+
+  //TextControllers to get user texts
   final TextEditingController _title = TextEditingController();
   final TextEditingController _description = TextEditingController();
   final TextEditingController _time = TextEditingController();
@@ -84,7 +85,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     ),
                   ),
                   if (imagePath != '') Image.file(File(imagePath)),
-                  Consumer<AddTaskViewModel>(builder: (context, add, child) {
+                  Consumer<AddTaskViewModel>(builder: (context, add, child) { //Consumer to monitor added tasks
                     WidgetsBinding.instance.addPostFrameCallback((_) {
                       if (add.message != '') {
                         showSnackBar(context, add.message);

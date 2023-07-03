@@ -9,6 +9,9 @@ class TaskListView extends ChangeNotifier{
   final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
   User? user = FirebaseAuth.instance.currentUser;
 
+
+  //Retrieve all streams of data from fireStore
+
   Stream<List<TaskViewModel>> getTasks() {
     return _fireStore
         .collection('AllTasks')
@@ -28,6 +31,8 @@ class TaskListView extends ChangeNotifier{
           .toList();
     });
   }
+
+  //Retrieve stream of data from fire store based on user search input
 
   Stream<List<TaskViewModel>> getSearchedTasks(String search) {
     return _fireStore

@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+//Handles the google authentication of users
+
 class AuthProvider{
 
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
@@ -15,8 +17,10 @@ class AuthProvider{
         idToken: googleAuth?.idToken
     );
 
-    return await firebaseAuth.signInWithCredential(credential);
+    return await firebaseAuth.signInWithCredential(credential); //Firebase sign in
   }
+
+  //Sign out from google sign in
 
   Future<String> signOut()async{
     await firebaseAuth.signOut();

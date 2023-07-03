@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:todo_uchenna/screens/home_screen.dart';
 import 'package:todo_uchenna/screens/authentication/auth_screen.dart';
 
+//SplashScreen
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -19,9 +21,9 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 2), (){
       if(firebaseAuth.currentUser != null){
-        nextPageReplace(const HomeScreen(), context);
+        nextPageReplace(const HomeScreen(), context); //Navigate to Home screen when user is already authenticated
       }else{
-        nextPageReplace(const AuthScreen(), context);
+        nextPageReplace(const AuthScreen(), context); //Navigate to Auth Screen if user isn't authenticated yet
       }
     });
 

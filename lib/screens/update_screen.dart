@@ -9,6 +9,7 @@ import 'package:todo_uchenna/view_models/add_task_view_model.dart';
 import 'package:todo_uchenna/widgets/custom_button.dart';
 import 'package:todo_uchenna/utils/snackbar.dart';
 
+//Update Screen
 class UpdateTaskScreen extends StatefulWidget {
   String title;
   String description;
@@ -23,6 +24,8 @@ class UpdateTaskScreen extends StatefulWidget {
 }
 
 class _UpdateTaskScreenState extends State<UpdateTaskScreen> {
+
+  //TextControllers to get user texts
   final TextEditingController _title = TextEditingController();
   final TextEditingController _description = TextEditingController();
   final TextEditingController _time = TextEditingController();
@@ -68,11 +71,11 @@ class _UpdateTaskScreenState extends State<UpdateTaskScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  TimePicker(controller: _time),
+                  TimePicker(controller: _time),//Pick time
                   const SizedBox(
                     height: 20,
                   ),
-                  textField(text: 'Current location', controller: _location),
+                  textField(text: 'Current location', controller: _location),//Auto-fills users current location
                   const SizedBox(
                     height: 20,
                   ),
@@ -91,7 +94,7 @@ class _UpdateTaskScreenState extends State<UpdateTaskScreen> {
                     ),
                   ),
                   if (imagePath != '') Image.file(File(imagePath)),
-                  Consumer<AddTaskViewModel>(builder: (context, add, child) {
+                  Consumer<AddTaskViewModel>(builder: (context, add, child) { //Consumer to update edited tasks
                     WidgetsBinding.instance.addPostFrameCallback((_) {
                       if (add.message != '') {
                         showSnackBar(context, add.message);

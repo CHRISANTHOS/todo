@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+//Task model to get parameters
 class Task {
   User? user = FirebaseAuth.instance.currentUser;
 
@@ -21,7 +22,7 @@ class Task {
       required this.image,
       this.createdOn});
 
-
+//Convert document data to model
   factory Task.fromSnapshot(DocumentSnapshot<Object?> document) {
     final data = (document.data()! as dynamic);
 
@@ -34,6 +35,7 @@ class Task {
         image: data['taskImage_url'] ?? '');
   }
 
+  //Convert Model to JSON
   Map<String, dynamic> toJson(){
     return {
       'title': title,

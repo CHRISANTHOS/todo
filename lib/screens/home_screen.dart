@@ -22,10 +22,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Location location = Location();
   AddTaskViewModel addTaskViewModel = AddTaskViewModel();
   TaskListView viewModel = TaskListView();
-  final TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();//control search text-field
   User? user = FirebaseAuth.instance.currentUser;
-  Stream<List<TaskViewModel>>? stream;
+  Stream<List<TaskViewModel>>? stream; //stream argument for TaskList
 
+  //Rebuild UI
   Widget _updateUI(AddTaskViewModel vm) {
     switch (vm.loading) {
       case true:
@@ -40,10 +41,12 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  //Get current address
   void getAddress() async {
     address = (await location.getCurrentLocation())!;
   }
 
+  //Implement initState
   @override
   void initState() {
     // TODO: implement initState
@@ -99,11 +102,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             suffixIcon: IconButton(
                               onPressed: () {
                                 setState(() {
-                                  _searchController.clear();
-                                  stream = viewModel.getTasks();
+                                  _searchController.clear(); //Clear text field
+                                  stream = viewModel.getTasks(); //Get all tasks
                                   FocusScopeNode currentFocus = FocusScope.of(context);
-                                  currentFocus.unfocus();
-                                  _updateUI(addTaskViewModel);
+                                  currentFocus.unfocus();//Close keyboard
+                                  _updateUI(addTaskViewModel);//Rebuild UI
                                 });
                               },
                               icon: const Icon(Icons.close),
@@ -151,6 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
+      //FloatingActionButton to Navigate to AddTaskScreen
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           nextPage(

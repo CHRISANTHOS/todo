@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+
+//Return custom button as a widget
+
 Widget customButton({required String text, required VoidCallback? onTap, Color? bgColor, Color? textColor}){
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 16.0),

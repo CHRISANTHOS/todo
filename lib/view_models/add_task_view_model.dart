@@ -15,11 +15,13 @@ class AddTaskViewModel extends ChangeNotifier {
   final storage.FirebaseStorage _storage = storage.FirebaseStorage.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  //Reset snack-bar message
   void resetMessage() {
     _message = '';
     notifyListeners();
   }
 
+  //Add new task to fireStore
   Future<void> addTask(
       {File? taskImage,
       String? uid,
@@ -63,7 +65,7 @@ class AddTaskViewModel extends ChangeNotifier {
         createdOn: FieldValue.serverTimestamp(),
       );
 
-      await _products.add(data.toJson());
+      await _products.add(data.toJson()); //Add Task model after converting to json
 
       _loading = false;
       _message = 'Success';
@@ -85,6 +87,7 @@ class AddTaskViewModel extends ChangeNotifier {
     }
   }
 
+  //Update existing tasks on fireStore
   Future<void> updateTask(
       {required String docId,
       File? taskImage,
@@ -123,7 +126,7 @@ class AddTaskViewModel extends ChangeNotifier {
 
       final data = Task(title: title!, description: description!, time: time!, image: taskImage.path, location: location);
 
-      await products.update(data.toJson());
+      await products.update(data.toJson()); //Update Task model
 
       _loading = false;
       _message = 'Success';
@@ -145,6 +148,7 @@ class AddTaskViewModel extends ChangeNotifier {
     }
   }
 
+  //Delete tasks
   Future<void> deleteTask({required String docId, required String uid}) async {
     CollectionReference _products = _firestore.collection('AllTasks');
 
